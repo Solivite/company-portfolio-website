@@ -43,12 +43,13 @@ const config: Config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
+        solivite: {
+          purple: "hsl(271 81% 56%)",
+          "purple-deep": "hsl(271 70% 35%)",
+          "purple-glow": "hsl(271 90% 60%)",
+          dark: "hsl(260 20% 4%)",
+          "dark-elevated": "hsl(260 25% 8%)",
+          light: "hsl(260 30% 98%)",
         },
       },
       borderRadius: {
@@ -58,11 +59,29 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-poppins)", "system-ui", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
+      },
+      animation: {
+        "fade-up": "fadeUp 0.8s ease-out forwards",
+        marquee: "marquee 30s linear infinite",
+        "glow-pulse": "glowPulse 4s ease-in-out infinite",
+      },
+      keyframes: {
+        fadeUp: {
+          from: { opacity: "0", transform: "translateY(24px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        glowPulse: {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.8" },
+        },
       },
     },
   },
   plugins: [],
 };
 export default config;
-

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SITE } from "@/lib/constants";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,16 +11,17 @@ const inter = Inter({
   display: "swap",
 });
 
-const poppins = Poppins({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Solivite - Complete Digital Solutions",
-  description: "All dimensions digital software house providing comprehensive digital solutions including web development, mobile apps, design, marketing, and more.",
+  title: `${SITE.name} — Building Digital Solutions That Matter`,
+  description:
+    "Solivite Solutions provides comprehensive digital services including design, web & mobile development, digital marketing, data & AI, and game development.",
 };
 
 export default function RootLayout({
@@ -28,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="font-sans antialiased bg-surface-dark text-white">
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
@@ -37,4 +39,3 @@ export default function RootLayout({
     </html>
   );
 }
-

@@ -2,23 +2,12 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
-
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "#", submenu: [
-    { name: "Design Services", href: "/services/design" },
-    { name: "Content Writing", href: "/services/content" },
-    { name: "Data & AI", href: "/services/data-ai" },
-    { name: "Development", href: "/services/development" },
-    { name: "Digital Marketing", href: "/services/marketing" },
-    { name: "Games", href: "/services/games" },
-  ]},
-  { name: "Contact", href: "/contact" },
-];
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import { NAV_ITEMS } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,9 +15,7 @@ export default function Header() {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,103 +24,112 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-dark shadow-lg" : "bg-transparent"
-      }`}
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled
+          ? "glass-dark border-b border-white/5 bg-surface-dark/80 backdrop-blur-xl"
+          : "bg-transparent"
+      )}
     >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Logo variant="landscape" showText={true} />
+      <nav className="container mx-auto flex items-center justify-between px-4 py-4">
+        <Logo variant="landscape" showText={true} />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <div
-                key={item.name}
-                className="relative group"
-                onMouseEnter={() => item.submenu && setActiveSubmenu(item.name)}
-                onMouseLeave={() => setActiveSubmenu(null)}
-              >
-                {item.submenu ? (
-                  <>
-                    <button className="text-white hover:text-purple-300 transition-colors">
-                      {item.name}
-                    </button>
-                    <AnimatePresence>
-                      {activeSubmenu === item.name && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          className="absolute top-full left-0 mt-2 w-56 glass-dark rounded-lg p-2 shadow-xl"
-                        >
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block px-4 py-2 text-white hover:bg-white/10 rounded-md transition-colors"
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="text-white hover:text-purple-300 transition-colors"
-                  >
+        {/* Desktop nav */}
+        <div className="hidden items-center gap-8 md:flex">
+          {NAV_ITEMS.map((item) => (
+            <div
+              key={item.name}
+              className="relative"
+              onMouseEnter={() => "submenu" in item && item.submenu && setActiveSubmenu(item.name)}
+              onMouseLeave={() => setActiveSubmenu(null)}
+            >
+              {"submenu" in item && item.submenu ? (
+                <>
+                  <button className="text-sm font-medium text-gray-300 transition-colors hover:text-white">
                     {item.name}
-                  </Link>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+                  </button>
+                  <AnimatePresence>
+                    {activeSubmenu === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute top-full left-1/2 mt-3 w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-surface-dark-elevated p-2 shadow-2xl"
+                      >
+                        {item.submenu.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            className="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/5 hover:text-white"
+                          >
+                            {sub.name}
+                            <ArrowRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="text-sm font-medium text-gray-300 transition-colors hover:text-white"
+                >
+                  {item.name}
+                </Link>
+              )}
+            </div>
+          ))}
         </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 glass-dark rounded-lg p-4 overflow-hidden"
-            >
-              {navItems.map((item) => (
-                <div key={item.name} className="mb-2">
-                  {item.submenu ? (
+        <div className="hidden md:block">
+          <PrimaryButton href="/contact" className="px-6 py-3 text-sm" showArrow={false}>
+            Start Your Project
+          </PrimaryButton>
+        </div>
+
+        <button
+          className="text-white md:hidden"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="border-t border-white/5 bg-surface-dark/95 backdrop-blur-xl md:hidden"
+          >
+            <div className="container mx-auto space-y-1 px-4 py-4">
+              {NAV_ITEMS.map((item) => (
+                <div key={item.name}>
+                  {"submenu" in item && item.submenu ? (
                     <>
                       <button
-                        className="text-white w-full text-left py-2"
+                        className="w-full py-3 text-left text-sm font-medium text-gray-300"
                         onClick={() =>
-                          setActiveSubmenu(
-                            activeSubmenu === item.name ? null : item.name
-                          )
+                          setActiveSubmenu(activeSubmenu === item.name ? null : item.name)
                         }
                       >
                         {item.name}
                       </button>
                       {activeSubmenu === item.name && (
-                        <div className="pl-4 space-y-1">
-                          {item.submenu.map((subItem) => (
+                        <div className="space-y-1 pb-2 pl-4">
+                          {item.submenu.map((sub) => (
                             <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block py-2 text-white/80 hover:text-white transition-colors"
+                              key={sub.name}
+                              href={sub.href}
+                              className="block py-2 text-sm text-gray-400 hover:text-white"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
-                              {subItem.name}
+                              {sub.name}
                             </Link>
                           ))}
                         </div>
@@ -142,7 +138,7 @@ export default function Header() {
                   ) : (
                     <Link
                       href={item.href}
-                      className="block text-white py-2 hover:text-purple-300 transition-colors"
+                      className="block py-3 text-sm font-medium text-gray-300 hover:text-white"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -150,11 +146,19 @@ export default function Header() {
                   )}
                 </div>
               ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+              <div className="pt-4">
+                <PrimaryButton
+                  href="/contact"
+                  className="w-full text-center"
+                  showArrow={false}
+                >
+                  Start Your Project
+                </PrimaryButton>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
-
