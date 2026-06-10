@@ -28,7 +28,8 @@
     /* Solivite brand tokens */
     --surface-dark: 260 20% 4%;
     --surface-dark-elevated: 260 25% 8%;
-    --surface-light: 260 30% 98%;
+    --surface-light: 270 35% 96%;
+    --surface-light-muted: 270 28% 93%;
     --purple-glow: 271 90% 60%;
     --purple-deep: 271 70% 35%;
     --purple-muted: 271 40% 20%;
@@ -65,6 +66,10 @@
     @apply bg-gradient-to-r from-purple-300 via-violet-200 to-blue-300 bg-clip-text text-transparent;
   }
 
+  .text-gradient-light {
+    @apply bg-gradient-to-r from-purple-700 via-violet-600 to-purple-600 bg-clip-text text-transparent;
+  }
+
   .bg-surface-dark {
     background-color: hsl(var(--surface-dark));
   }
@@ -75,6 +80,10 @@
 
   .bg-surface-light {
     background-color: hsl(var(--surface-light));
+  }
+
+  .bg-surface-light-muted {
+    background-color: hsl(var(--surface-light-muted));
   }
 
   .glow-purple {
@@ -141,6 +150,39 @@
     hsl(271 60% 40% / 0.4) 50%,
     transparent
   );
+}
+
+/* Soft lavender light sections — replaces flat white */
+.section-surface-light {
+  position: relative;
+  background-color: hsl(var(--surface-light));
+  background-image:
+    radial-gradient(ellipse 110% 70% at 50% -10%, hsl(271 52% 86% / 0.55) 0%, transparent 58%),
+    radial-gradient(ellipse 65% 45% at 95% 45%, hsl(283 42% 88% / 0.4) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 40% at 5% 75%, hsl(265 38% 89% / 0.35) 0%, transparent 48%),
+    linear-gradient(180deg, hsl(270 32% 94%) 0%, hsl(var(--surface-light)) 45%, hsl(268 30% 95%) 100%);
+}
+
+/* Muted lavender band between light sections */
+.section-surface-light-muted {
+  position: relative;
+  background-color: hsl(var(--surface-light-muted));
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, hsl(271 40% 88% / 0.35) 0%, transparent 55%);
+}
+
+@layer components {
+  .light-card {
+    @apply rounded-2xl border border-purple-200/70 bg-white/90 shadow-sm shadow-purple-900/[0.04] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/10;
+  }
+
+  .light-chip {
+    @apply rounded-full border border-purple-100 bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700;
+  }
+
+  .light-tool-chip {
+    @apply rounded-full border border-purple-100 bg-white/80 px-5 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700;
+  }
 }
 
 html {

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { ServicePageData } from "@/lib/services-data";
-import GradientHeadline, { GradientText } from "@/components/ui/GradientHeadline";
+import GradientHeadline, { GradientText, GradientTextLight } from "@/components/ui/GradientHeadline";
 import ServicePillRow from "@/components/ui/ServicePillRow";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import HeroBackground from "@/components/effects/HeroBackground";
@@ -21,7 +21,7 @@ export default function ServiceHero({ data }: ServiceHeroProps) {
     <section
       className={cn(
         "relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24",
-        isDark ? "bg-surface-dark text-white" : "bg-surface-light text-foreground"
+        isDark ? "bg-surface-dark text-white" : "section-surface-light text-foreground"
       )}
     >
       {isDark && (
@@ -57,26 +57,23 @@ export default function ServiceHero({ data }: ServiceHeroProps) {
                 <GradientText>{hero.headlineGradient}</GradientText>
               </GradientHeadline>
             ) : (
-              <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
-                {hero.headline}{" "}
-                <span className="text-gradient">{hero.headlineGradient}</span>
+              <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-slate-900 md:text-6xl lg:text-7xl">
+                {hero.headline}
+                <br />
+                <GradientTextLight>{hero.headlineGradient}</GradientTextLight>
               </h1>
             )}
 
             <p
               className={cn(
                 "mt-6 max-w-lg text-lg leading-relaxed",
-                isDark ? "text-gray-400" : "text-muted-foreground"
+                isDark ? "text-gray-400" : "text-slate-600"
               )}
             >
               {hero.description}
             </p>
 
-            <ServicePillRow
-              tags={hero.tags}
-              dark={isDark}
-              className="mt-8 justify-start"
-            />
+            <ServicePillRow tags={hero.tags} dark={isDark} className="mt-8 justify-start" />
 
             <div className="mt-10">
               <PrimaryButton
@@ -98,8 +95,6 @@ export default function ServiceHero({ data }: ServiceHeroProps) {
           </motion.div>
         </div>
       </div>
-
-      <div className="section-divider absolute bottom-0 left-0 right-0" />
     </section>
   );
 }

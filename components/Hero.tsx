@@ -7,11 +7,13 @@ import { SITE } from "@/lib/constants";
 import GradientHeadline, { GradientText } from "@/components/ui/GradientHeadline";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import HeroBackground from "@/components/effects/HeroBackground";
+import HeroParticleSphere from "@/components/effects/HeroParticleSphere";
 
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
       <HeroBackground rayIntensity={1.1} />
+      <HeroParticleSphere />
 
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="mx-auto max-w-5xl text-center">

@@ -13,27 +13,33 @@ export default function ServiceProcess({ process, dark = true }: ServiceProcessP
   return (
     <section
       className={cn(
-        "py-20 md:py-28",
-        dark ? "bg-surface-dark-elevated text-white" : "bg-secondary/30 text-foreground"
+        "relative py-20 md:py-28",
+        dark ? "bg-surface-dark-elevated text-white" : "section-surface-light-muted text-foreground"
       )}
     >
-      <div className="container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4">
         <ScrollReveal>
           <SectionHeader
             eyebrow="Our Process"
             title={
               <>
-                How We <span className="text-gradient">Work</span>
+                How We{" "}
+                <span className={dark ? "text-gradient" : "text-gradient-light"}>Work</span>
               </>
             }
             dark={dark}
           />
         </ScrollReveal>
 
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-3">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3">
           {process.map((step, index) => (
             <ScrollReveal key={step.step} delay={index * 0.12}>
-              <div className="relative text-center md:text-left">
+              <div
+                className={cn(
+                  "relative text-center md:text-left",
+                  !dark && "light-card p-6"
+                )}
+              >
                 <span
                   className={cn(
                     "font-display text-sm font-bold",
@@ -42,11 +48,18 @@ export default function ServiceProcess({ process, dark = true }: ServiceProcessP
                 >
                   {step.step}
                 </span>
-                <h3 className="mt-2 font-display text-xl font-bold">{step.title}</h3>
+                <h3
+                  className={cn(
+                    "mt-2 font-display text-xl font-bold",
+                    !dark && "text-slate-900"
+                  )}
+                >
+                  {step.title}
+                </h3>
                 <p
                   className={cn(
                     "mt-2 text-sm leading-relaxed",
-                    dark ? "text-gray-400" : "text-muted-foreground"
+                    dark ? "text-gray-400" : "text-slate-600"
                   )}
                 >
                   {step.description}

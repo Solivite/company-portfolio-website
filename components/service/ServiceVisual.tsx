@@ -1,6 +1,7 @@
 "use client";
 
 import OptionalImage from "@/components/ui/OptionalImage";
+import WebGLServiceVisual from "@/components/effects/webgl/WebGLServiceVisual";
 import { cn } from "@/lib/utils";
 import type { ServiceVisualType } from "@/lib/services-data";
 
@@ -33,6 +34,8 @@ export default function ServiceVisual({ type, theme, image, className }: Service
       {type === "ai" && <PedestalVisual variant="ai" />}
       {type === "content" && <ContentVisual />}
       {type === "games" && <GamesVisual />}
+
+      <WebGLServiceVisual type={type} />
 
       {image && (
         <OptionalImage

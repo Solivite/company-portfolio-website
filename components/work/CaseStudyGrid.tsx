@@ -107,7 +107,6 @@ export default function CaseStudyGrid({ studies, showHeader = true }: CaseStudyG
   return (
     <section className="relative overflow-hidden bg-surface-dark py-24 md:py-32">
       <SectionGlow position="top" />
-      <div className="section-divider absolute top-0 left-0 right-0" />
 
       <div className="relative z-10 container mx-auto px-4">
         {showHeader && (

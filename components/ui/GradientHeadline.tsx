@@ -29,3 +29,13 @@ export function GradientText({
 }) {
   return <span className={cn("text-gradient", className)}>{children}</span>;
 }
+
+export function GradientTextLight({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return <span className={cn("text-gradient-light", className)}>{children}</span>;
+}

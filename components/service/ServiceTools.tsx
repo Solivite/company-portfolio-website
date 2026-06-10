@@ -13,11 +13,11 @@ export default function ServiceTools({ tools, dark = false }: ServiceToolsProps)
   return (
     <section
       className={cn(
-        "py-16 md:py-20",
-        dark ? "bg-surface-dark text-white" : "bg-white text-foreground"
+        "relative py-16 md:py-20",
+        dark ? "bg-surface-dark text-white" : "section-surface-light text-foreground"
       )}
     >
-      <div className="container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4">
         <ScrollReveal>
           <SectionHeader
             eyebrow="Tools & Stack"
@@ -33,10 +33,9 @@ export default function ServiceTools({ tools, dark = false }: ServiceToolsProps)
               <span
                 key={tool}
                 className={cn(
-                  "rounded-full border px-5 py-2.5 text-sm font-medium transition-colors",
                   dark
-                    ? "border-white/10 text-gray-300 hover:border-purple-500/40 hover:text-white"
-                    : "border-border text-muted-foreground hover:border-purple-300 hover:text-purple-700"
+                    ? "rounded-full border border-white/10 px-5 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:border-purple-500/40 hover:text-white"
+                    : "light-tool-chip"
                 )}
               >
                 {tool}

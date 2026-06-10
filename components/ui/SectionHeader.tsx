@@ -38,7 +38,7 @@ export default function SectionHeader({
       <h2
         className={cn(
           "font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl",
-          dark ? "text-white" : "text-foreground"
+          dark ? "text-white" : "text-slate-900"
         )}
       >
         {title}
@@ -48,7 +48,7 @@ export default function SectionHeader({
           className={cn(
             "mx-auto mt-4 max-w-2xl text-lg md:text-xl",
             align === "left" && "mx-0",
-            dark ? "text-gray-400" : "text-muted-foreground"
+            dark ? "text-gray-400" : "text-slate-600"
           )}
         >
           {description}
