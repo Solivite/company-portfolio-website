@@ -27,7 +27,7 @@ export default function HeroParticleSphere({ className }: HeroParticleSphereProp
       )}
       aria-hidden
     >
-      <div className="h-[min(92vw,720px)] w-[min(92vw,720px)] max-h-[85vh] opacity-90">
+      <div className="pointer-events-auto h-[min(92vw,720px)] w-[min(92vw,720px)] max-h-[85vh] opacity-90">
         <HeroWebGLCanvas className="h-full w-full" />
       </div>
     </div>
