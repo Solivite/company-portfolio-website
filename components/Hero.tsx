@@ -1,13 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { SITE } from "@/lib/constants";
 import GradientHeadline, { GradientText } from "@/components/ui/GradientHeadline";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import HeroBackground from "@/components/effects/HeroBackground";
 import HeroParticleSphere from "@/components/effects/HeroParticleSphere";
+import { HOME_HERO } from "@/lib/home-content";
 
 export default function Hero() {
   return (
@@ -23,7 +21,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-purple-400"
           >
-            {SITE.name}
+            {HOME_HERO.eyebrow}
           </motion.p>
 
           <motion.div
@@ -33,11 +31,11 @@ export default function Hero() {
           >
             <GradientHeadline
               as="h1"
-              className="text-5xl leading-[1.05] md:text-7xl lg:text-8xl"
+              className="text-4xl leading-[1.08] sm:text-5xl md:text-7xl lg:text-8xl"
             >
-              Building Digital
+              The Smartest Way to Build, Design &amp;
               <br />
-              <GradientText>Solutions That Matter</GradientText>
+              <GradientText>Grow Your Brand Online</GradientText>
             </GradientHeadline>
           </motion.div>
 
@@ -47,8 +45,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mx-auto mt-8 max-w-2xl text-lg text-gray-400 md:text-xl"
           >
-            We empower organizations with design, development, and AI that turn
-            complex challenges into real-world outcomes.
+            {HOME_HERO.description}
           </motion.p>
 
           <motion.div
@@ -57,14 +54,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <PrimaryButton href="/contact">Start Your Project</PrimaryButton>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-gray-300 transition-colors hover:text-white"
-            >
-              Learn More
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <PrimaryButton href={HOME_HERO.cta.href}>{HOME_HERO.cta.label}</PrimaryButton>
           </motion.div>
         </div>
       </div>

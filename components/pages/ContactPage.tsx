@@ -61,11 +61,11 @@ export default function ContactPage() {
               Contact
             </p>
             <GradientHeadline as="h1" className="text-4xl md:text-6xl lg:text-7xl">
-              Get in <GradientText>Touch</GradientText>
+              Let&apos;s Build <GradientText>Together</GradientText>
             </GradientHeadline>
             <p className="mx-auto mt-6 max-w-xl text-lg text-gray-400">
-              Have a project in mind? Let&apos;s discuss how we can help bring your
-              vision to life.
+              Ready to build, design, and grow your brand online? Tell us about your
+              project and we&apos;ll get back to you within one business day.
             </p>
           </ScrollReveal>
         </div>

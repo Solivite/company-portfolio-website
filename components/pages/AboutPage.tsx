@@ -48,7 +48,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-purple-400">
-                About Us
+                AI-First Digital Agency
               </p>
               <GradientHeadline
                 as="h1"
@@ -58,9 +58,9 @@ export default function AboutPage() {
                 <GradientText>{SITE.shortName}</GradientText>
               </GradientHeadline>
               <p className="mt-6 text-lg leading-relaxed text-gray-400 md:text-xl">
-                We are a complete digital solutions company with a rich legacy of
-                transforming businesses through innovative technology and creative
-                excellence.
+                We&apos;re not just a service provider — we&apos;re your digital growth
+                partner. Our team of designers, developers, and marketers work together
+                as one unit to take your brand from where it is to where it needs to be.
               </p>
             </ScrollReveal>
           </div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
 
           <ScrollReveal delay={0.3}>
             <div className="mt-12 text-center">
-              <PrimaryButton href="/contact">Work With Us</PrimaryButton>
+              <PrimaryButton href="/contact">Let&apos;s Build Together</PrimaryButton>
             </div>
           </ScrollReveal>
         </div>

@@ -4,7 +4,8 @@ import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `About | ${SITE.name}`,
-  description: `Learn about ${SITE.name} — our mission, legacy, and the team behind your digital success.`,
+  description:
+    "Your digital growth partner — designers, developers, and marketers working as one team to grow your brand online.",
 };
 
 export default function About() {

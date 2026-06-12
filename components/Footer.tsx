@@ -1,74 +1,30 @@
 import Link from "next/link";
-import { SITE, SERVICES } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
+import { FOOTER_SERVICES } from "@/lib/services-structure";
+import { NEWSLETTER } from "@/lib/home-content";
 import Logo from "./Logo";
 import ContactBar from "@/components/ui/ContactBar";
+import NewsletterForm from "@/components/ui/NewsletterForm";
+
+const QUICK_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services/development" },
+  { label: "About Us", href: "/about" },
+  { label: "Portfolio", href: "/work" },
+  { label: "Contact", href: "/contact" },
+] as const;
 
 export default function Footer() {
   return (
     <footer className="bg-surface-dark text-white">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-          <div className="md:col-span-1">
-            <Logo variant="landscape" showText={true} className="mb-4" />
-            <p className="text-sm leading-relaxed text-gray-400">
-              {SITE.tagline} From design to development, marketing to AI — we
-              transform ideas into reality.
-            </p>
-          </div>
-
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-400">
-              Services
-            </h3>
-            <ul className="space-y-2.5 text-sm text-gray-400">
-              {SERVICES.slice(0, 4).map((s) => (
-                <li key={s.href}>
-                  <Link
-                    href={s.href}
-                    className="transition-colors hover:text-white"
-                  >
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-400">
-              Company
-            </h3>
-            <ul className="space-y-2.5 text-sm text-gray-400">
-              <li>
-                <Link href="/work" className="transition-colors hover:text-white">
-                  Our Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="transition-colors hover:text-white">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="transition-colors hover:text-white">
-                  Contact
-                </Link>
-              </li>
-              {SERVICES.slice(4).map((s) => (
-                <li key={s.href}>
-                  <Link href={s.href} className="transition-colors hover:text-white">
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-400">
-              Get in Touch
+              Office
             </h3>
             <ul className="space-y-3 text-sm text-gray-400">
+              <li>{SITE.location}</li>
               <li>
                 <a
                   href={`mailto:${SITE.email}`}
@@ -85,23 +41,59 @@ export default function Footer() {
                   {SITE.phone}
                 </a>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-400">
+              Quick Links
+            </h3>
+            <ul className="space-y-2.5 text-sm text-gray-400">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <a
-                  href={SITE.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-white"
-                >
-                  {SITE.website}
-                </a>
+                <Link href="/blog" className="transition-colors hover:text-white">
+                  Blog
+                </Link>
               </li>
             </ul>
           </div>
+
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-400">
+              Our Services
+            </h3>
+            <ul className="space-y-2.5 text-sm text-gray-400">
+              {FOOTER_SERVICES.map((service) => (
+                <li key={service.href}>
+                  <Link href={service.href} className="transition-colors hover:text-white">
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-purple-400">
+              Newsletter
+            </h3>
+            <p className="mb-4 text-sm leading-relaxed text-gray-400">
+              {NEWSLETTER.footerDescription}
+            </p>
+            <NewsletterForm compact />
+          </div>
         </div>
 
-        <div className="mt-12 border-t border-white/5 pt-8 text-center text-xs text-gray-500">
-          <p>
-            &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">
+          <Logo variant="landscape" showText={true} className="opacity-80" />
+          <p className="text-xs text-gray-500">
+            &copy; 2026 {SITE.name}. All Rights Reserved.
           </p>
         </div>
       </div>

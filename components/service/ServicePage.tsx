@@ -3,6 +3,7 @@
 import type { ServicePageData } from "@/lib/services-data";
 import ServiceHero from "./ServiceHero";
 import ServiceDeliverables from "./ServiceDeliverables";
+import ServiceSubOfferings from "./ServiceSubOfferings";
 import ServiceProcess from "./ServiceProcess";
 import ServiceTools from "./ServiceTools";
 import ServiceCTA from "./ServiceCTA";
@@ -17,6 +18,9 @@ export default function ServicePage({ data }: ServicePageProps) {
   return (
     <>
       <ServiceHero data={data} />
+      {data.subOfferings && (
+        <ServiceSubOfferings offerings={data.subOfferings} dark={isDark} />
+      )}
       <ServiceDeliverables
         deliverables={data.deliverables}
         title={data.title}

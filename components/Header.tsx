@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import { NAV_ITEMS } from "@/lib/constants";
+import type { NavSubItem } from "@/lib/services-structure";
 import { cn } from "@/lib/utils";
+
+function hasSubmenu(
+  item: (typeof NAV_ITEMS)[number]
+): item is (typeof NAV_ITEMS)[number] & { submenu: readonly NavSubItem[] } {
+  return "submenu" in item && Array.isArray(item.submenu);
+}
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,10 +47,10 @@ export default function Header() {
             <div
               key={item.name}
               className="relative"
-              onMouseEnter={() => "submenu" in item && item.submenu && setActiveSubmenu(item.name)}
+              onMouseEnter={() => hasSubmenu(item) && setActiveSubmenu(item.name)}
               onMouseLeave={() => setActiveSubmenu(null)}
             >
-              {"submenu" in item && item.submenu ? (
+              {hasSubmenu(item) ? (
                 <>
                   <button className="text-sm font-medium text-gray-300 transition-colors hover:text-white">
                     {item.name}
@@ -55,17 +62,31 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 8 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-1/2 mt-3 w-64 -translate-x-1/2 rounded-xl border border-white/10 bg-surface-dark-elevated p-2 shadow-2xl"
+                        className="absolute top-full left-1/2 mt-3 w-72 -translate-x-1/2 rounded-xl border border-white/10 bg-surface-dark-elevated p-2 shadow-2xl"
                       >
                         {item.submenu.map((sub) => (
-                          <Link
-                            key={sub.name}
-                            href={sub.href}
-                            className="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-white/5 hover:text-white"
-                          >
-                            {sub.name}
-                            <ArrowRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
-                          </Link>
+                          <div key={sub.name}>
+                            <Link
+                              href={sub.href}
+                              className="flex items-center justify-between rounded-lg px-4 py-2.5 text-sm font-medium text-gray-200 transition-colors hover:bg-white/5 hover:text-white"
+                            >
+                              {sub.name}
+                              <ArrowRight className="h-3.5 w-3.5 opacity-40" />
+                            </Link>
+                            {sub.children && (
+                              <div className="mb-1 ml-3 border-l border-white/5 pl-2">
+                                {sub.children.map((child) => (
+                                  <Link
+                                    key={child.href}
+                                    href={child.href}
+                                    className="block rounded-lg px-3 py-2 text-xs text-gray-400 transition-colors hover:bg-white/5 hover:text-white"
+                                  >
+                                    {child.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         ))}
                       </motion.div>
                     )}
@@ -85,7 +106,7 @@ export default function Header() {
 
         <div className="hidden md:block">
           <PrimaryButton href="/contact" className="px-6 py-3 text-sm" showArrow={false}>
-            Start Your Project
+            Let&apos;s Build Together
           </PrimaryButton>
         </div>
 
@@ -110,27 +131,44 @@ export default function Header() {
             <div className="container mx-auto space-y-1 px-4 py-4">
               {NAV_ITEMS.map((item) => (
                 <div key={item.name}>
-                  {"submenu" in item && item.submenu ? (
+                  {hasSubmenu(item) ? (
                     <>
                       <button
-                        className="w-full py-3 text-left text-sm font-medium text-gray-300"
+                        className="flex w-full items-center justify-between py-3 text-left text-sm font-medium text-gray-300"
                         onClick={() =>
                           setActiveSubmenu(activeSubmenu === item.name ? null : item.name)
                         }
                       >
                         {item.name}
+                        <ChevronRight
+                          className={cn(
+                            "h-4 w-4 transition-transform",
+                            activeSubmenu === item.name && "rotate-90"
+                          )}
+                        />
                       </button>
                       {activeSubmenu === item.name && (
                         <div className="space-y-1 pb-2 pl-4">
                           {item.submenu.map((sub) => (
-                            <Link
-                              key={sub.name}
-                              href={sub.href}
-                              className="block py-2 text-sm text-gray-400 hover:text-white"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {sub.name}
-                            </Link>
+                            <div key={sub.name}>
+                              <Link
+                                href={sub.href}
+                                className="block py-2 text-sm text-gray-300 hover:text-white"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {sub.name}
+                              </Link>
+                              {sub.children?.map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  className="block py-1.5 pl-3 text-xs text-gray-500 hover:text-white"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {child.name}
+                                </Link>
+                              ))}
+                            </div>
                           ))}
                         </div>
                       )}
@@ -152,7 +190,7 @@ export default function Header() {
                   className="w-full text-center"
                   showArrow={false}
                 >
-                  Start Your Project
+                  Let&apos;s Build Together
                 </PrimaryButton>
               </div>
             </div>

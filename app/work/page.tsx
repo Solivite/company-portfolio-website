@@ -8,8 +8,9 @@ import ScrollReveal from "@/components/ScrollReveal";
 import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
-  title: `Work | ${SITE.name}`,
-  description: "Explore case studies and client projects delivered by Solivite Solutions.",
+  title: `Portfolio | ${SITE.name}`,
+  description:
+    "Flexible digital solutions built around your goals — explore our portfolio of design, development, and marketing projects.",
 };
 
 export default function WorkPage() {
@@ -23,14 +24,14 @@ export default function WorkPage() {
         <div className="relative z-10 container mx-auto px-4 text-center">
           <ScrollReveal>
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-purple-400">
-              Our Work
+              Perfect Solutions
             </p>
             <GradientHeadline as="h1" className="text-4xl md:text-6xl lg:text-7xl">
-              Case <GradientText>Studies</GradientText>
+              Our <GradientText>Portfolio</GradientText>
             </GradientHeadline>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
-              Proven results across design, development, and marketing — measurable impact for
-              every client we partner with.
+              Every business is different — so every solution we build is too. Explore
+              projects tailored to each client&apos;s industry, audience, and goals.
             </p>
           </ScrollReveal>
         </div>

@@ -19,9 +19,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE.name} — Building Digital Solutions That Matter`,
+  title: `${SITE.name} — AI-First Digital Agency`,
   description:
-    "Solivite Solutions provides comprehensive digital services including design, web & mobile development, digital marketing, data & AI, and game development.",
+    "The smartest way to build, design, and grow your brand online. UI/UX design, web and app development, and digital marketing — all under one roof.",
 };
 
 export default function RootLayout({

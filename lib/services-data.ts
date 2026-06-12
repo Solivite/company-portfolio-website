@@ -49,6 +49,12 @@ export interface ServiceDeliverable {
   description: string;
 }
 
+export interface ServiceSubOffering {
+  title: string;
+  description: string;
+  href: string;
+}
+
 export interface ServicePageData {
   slug: string;
   number: string;
@@ -67,6 +73,7 @@ export interface ServicePageData {
   deliverables: ServiceDeliverable[];
   tools: readonly string[];
   process: readonly { step: string; title: string; description: string }[];
+  subOfferings?: readonly ServiceSubOffering[];
   cta: {
     title: string;
     description: string;
@@ -78,17 +85,17 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
   design: {
     slug: "design",
     number: "01",
-    title: "Design Services",
+    title: "UI/UX Design",
     metaDescription:
-      "Graphic design, UI/UX, logo design, branding, and motion from Solivite Solutions.",
+      "UI/UX design, branding, and conversion-ready digital experiences from Solivite Solutions.",
     hero: {
       theme: "dark",
-      eyebrow: "Design Services",
-      headline: "Do You Need a",
-      headlineGradient: "Designer?",
+      eyebrow: "UI/UX Design",
+      headline: "Digital Experiences That",
+      headlineGradient: "Feel Effortless",
       description:
-        "Transform your ideas into visually stunning designs. Our creative team delivers exceptional design solutions that elevate your brand.",
-      tags: ["Graphic Design", "Logo Design", "UX/UI Design", "Branding Design"],
+        "We design digital experiences that feel effortless. Every interface is built around your users — intuitive, engaging, and conversion-ready.",
+      tags: ["UI/UX Design", "Branding", "Prototyping", "Design Systems"],
       visual: "design",
       image: "/images/services/design.webp",
     },
@@ -139,24 +146,24 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
     cta: {
       title: "Ready to Get Started?",
       description: "Let's discuss your design needs and create something amazing together.",
-      buttonText: "Start Your Project",
+      buttonText: "Let's Build Together",
     },
   },
 
   development: {
     slug: "development",
     number: "02",
-    title: "Development",
+    title: "Web & App Development",
     metaDescription:
-      "Web and mobile development — WordPress, Shopify, React, Next.js, and full-stack solutions.",
+      "WordPress, Shopify, MERN, MEAN, and mobile app development — fast, scalable, future-proof digital products.",
     hero: {
       theme: "light",
-      eyebrow: "Development",
-      headline: "Launch Your Dream",
-      headlineGradient: "App",
+      eyebrow: "Web & App Development",
+      headline: "Build Fast, Scalable",
+      headlineGradient: "Digital Products",
       description:
-        "Design. Build. Deploy. From simple websites to complex applications, we build digital solutions that scale with your business.",
-      tags: ["Cross-platform", "Fast", "Secure", "Modern"],
+        "WordPress, Shopify, MERN, MEAN, or mobile — we build fast, scalable, and future-proof digital products tailored to your business.",
+      tags: ["WordPress", "Shopify", "MERN", "Mobile"],
       visual: "development",
       image: "/images/services/development.webp",
     },
@@ -174,7 +181,7 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
       {
         icon: "code",
         title: "Custom Web Development",
-        description: "Fully custom apps with React, Next.js, Angular, or Vue — scalable, modern, and fast.",
+        description: "Fully custom MERN and MEAN applications — scalable, modern, and built to perform.",
       },
       {
         icon: "smartphone",
@@ -182,14 +189,36 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
         description: "Native iOS and Android apps plus cross-platform solutions with React Native and Flutter.",
       },
       {
-        icon: "layers",
-        title: "Full-Stack Solutions",
-        description: "End-to-end development — frontend, backend, APIs, databases, and cloud infrastructure.",
+        icon: "cpu",
+        title: "AI-Powered Development",
+        description: "Intelligent features, automation, and data-driven enhancements built into your product.",
       },
       {
         icon: "rocket",
         title: "Maintenance & Support",
         description: "Ongoing maintenance, updates, security patches, and dedicated support.",
+      },
+    ],
+    subOfferings: [
+      {
+        title: "WordPress Development",
+        description: "Custom WordPress sites, themes, plugins, and e-commerce solutions.",
+        href: "/services/development/wordpress",
+      },
+      {
+        title: "Shopify Development",
+        description: "High-converting Shopify stores with custom themes and integrations.",
+        href: "/services/development/shopify",
+      },
+      {
+        title: "Custom Development",
+        description: "MERN, MEAN, and fully custom web applications built to scale.",
+        href: "/services/development/custom",
+      },
+      {
+        title: "Mobile Apps",
+        description: "Native and cross-platform mobile apps for iOS and Android.",
+        href: "/services/development/mobile-apps",
       },
     ],
     tools: ["React", "Next.js", "Node.js", "Flutter", "WordPress", "Shopify"],
@@ -201,148 +230,24 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
     cta: {
       title: "Let's Build Something Great",
       description: "Ready to bring your idea to life? Get in touch and let's discuss your project.",
-      buttonText: "Start Your Project",
-    },
-  },
-
-  content: {
-    slug: "content",
-    number: "03",
-    title: "Content Writing",
-    metaDescription:
-      "Professional content writing — blogs, copywriting, technical docs, and content strategy.",
-    hero: {
-      theme: "light",
-      eyebrow: "Content Writing",
-      headline: "Words That",
-      headlineGradient: "Resonate",
-      description:
-        "We create compelling content that engages your audience, strengthens your brand voice, and drives measurable results.",
-      tags: ["Web Copy", "Blog Posts", "Social Content", "SEO Writing"],
-      visual: "content",
-      image: "/images/services/content.webp",
-    },
-    deliverables: [
-      {
-        icon: "fileText",
-        title: "Blog Writing",
-        description: "Engaging, SEO-optimized blog posts that drive traffic and establish thought leadership.",
-      },
-      {
-        icon: "penSquare",
-        title: "Copywriting",
-        description: "Compelling copy that converts — landing pages, emails, and campaigns that sell.",
-      },
-      {
-        icon: "bookOpen",
-        title: "Technical Writing",
-        description: "Clear documentation, user manuals, and guides that make complex topics accessible.",
-      },
-      {
-        icon: "globe",
-        title: "Website Content",
-        description: "Professional website copy that tells your story and drives conversions.",
-      },
-      {
-        icon: "messageSquare",
-        title: "Social Media Content",
-        description: "Captivating posts, captions, and content strategies that grow your presence.",
-      },
-      {
-        icon: "fileEdit",
-        title: "Content Strategy",
-        description: "Comprehensive strategies aligned with your business goals and audience.",
-      },
-    ],
-    tools: ["SEO Tools", "Grammarly", "Ahrefs", "Google Analytics", "Notion"],
-    process: [
-      { step: "01", title: "Brief", description: "Understand your voice, audience, and objectives." },
-      { step: "02", title: "Create", description: "Draft, refine, and optimize every piece of content." },
-      { step: "03", title: "Publish", description: "Deliver ready-to-publish content with SEO baked in." },
-    ],
-    cta: {
-      title: "Let's Create Amazing Content",
-      description: "Get in touch to discuss your content needs and see how we can help.",
-      buttonText: "Start Your Project",
-    },
-  },
-
-  "data-ai": {
-    slug: "data-ai",
-    number: "04",
-    title: "Data & AI",
-    metaDescription:
-      "Machine learning, data analytics, AI integration, and predictive analytics from Solivite Solutions.",
-    hero: {
-      theme: "dark",
-      eyebrow: "Data & AI",
-      headline: "Unlock the Power of",
-      headlineGradient: "Intelligent Data",
-      description:
-        "Harness the power of data and artificial intelligence to drive innovation and growth in your business.",
-      tags: ["Analytics", "Machine Learning", "AI Integration", "Automation"],
-      visual: "ai",
-      image: "/images/services/data-ai.webp",
-    },
-    deliverables: [
-      {
-        icon: "brain",
-        title: "Machine Learning",
-        description: "Custom ML models from predictive analytics to recommendation systems.",
-      },
-      {
-        icon: "database",
-        title: "Data Analytics",
-        description: "Transform raw data into actionable insights with analysis and visualization.",
-      },
-      {
-        icon: "barChart3",
-        title: "Business Intelligence",
-        description: "Dashboards, reports, and BI platforms for data-driven decisions.",
-      },
-      {
-        icon: "cpu",
-        title: "AI Integration",
-        description: "Chatbots, automation, and intelligent workflows integrated into your systems.",
-      },
-      {
-        icon: "network",
-        title: "Data Engineering",
-        description: "Robust pipelines, ETL processes, data warehousing, and cloud solutions.",
-      },
-      {
-        icon: "trendingUp",
-        title: "Predictive Analytics",
-        description: "Forecast trends and behaviors with advanced predictive models.",
-      },
-    ],
-    tools: ["Python", "TensorFlow", "PyTorch", "OpenAI", "Power BI", "AWS"],
-    process: [
-      { step: "01", title: "Assess", description: "Audit data sources, quality, and AI readiness." },
-      { step: "02", title: "Model", description: "Build, train, and validate models with solid evals." },
-      { step: "03", title: "Deploy", description: "Production deployment with monitoring and guardrails." },
-    ],
-    cta: {
-      title: "Unlock the Power of Data",
-      description: "Ready to transform your business with AI and data solutions? Let's talk.",
-      buttonText: "Start Your Project",
+      buttonText: "Let's Build Together",
     },
   },
 
   marketing: {
     slug: "marketing",
-    number: "05",
+    number: "03",
     title: "Digital Marketing",
     metaDescription:
-      "SEO, social media, Meta ads, PPC, and growth marketing that drives measurable results.",
+      "SEO, social media, Google Ads, and AI-powered marketing strategies that drive measurable results.",
     hero: {
       theme: "dark",
       eyebrow: "Digital Marketing",
-      headline: "You're",
-      headlineGradient: "Leaking.",
+      headline: "Put Your Brand in Front of",
+      headlineGradient: "The Right Audience",
       description:
-        "Growth isn't missing — it's escaping. We plug the gaps with data-driven strategies that turn attention into revenue.",
-      tags: ["SEO", "Meta Ads", "Social Media", "Growth Strategy"],
+        "SEO, Social Media, and Google Ads — powered by AI insights and real strategy to put your brand in front of the right audience.",
+      tags: ["SEO", "Social Media", "Google Ads", "AI Insights"],
       visual: "marketing",
       image: "/images/services/marketing.webp",
     },
@@ -359,8 +264,13 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
       },
       {
         icon: "target",
-        title: "PPC & Meta Ads",
-        description: "Google Ads, Meta ads, and paid campaigns with data-driven strategies that convert.",
+        title: "Google Ads & PPC",
+        description: "Google Ads and paid campaigns with data-driven strategies that convert.",
+      },
+      {
+        icon: "penSquare",
+        title: "SEO Content Writing",
+        description: "Compelling, search-optimised copy that ranks and converts across your funnel.",
       },
       {
         icon: "mail",
@@ -387,73 +297,222 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
     cta: {
       title: "Ready to Grow Your Business?",
       description: "Let's create a marketing strategy that drives real results.",
-      buttonText: "Start Your Project",
+      buttonText: "Let's Build Together",
     },
   },
+};
 
-  games: {
-    slug: "games",
-    number: "06",
-    title: "Game Development",
+export const DEVELOPMENT_SUB_PAGES: Record<string, ServicePageData> = {
+  wordpress: {
+    slug: "wordpress",
+    number: "02",
+    title: "WordPress Development",
     metaDescription:
-      "Game development for mobile, web, AR/VR, and multiplayer experiences from Solivite Solutions.",
+      "Custom WordPress development — themes, plugins, e-commerce, and maintenance from Solivite Solutions.",
     hero: {
-      theme: "dark",
-      eyebrow: "Game Development",
-      headline: "Create Games",
-      headlineGradient: "Players Love",
+      theme: "light",
+      eyebrow: "WordPress Development",
+      headline: "WordPress Sites That",
+      headlineGradient: "Perform",
       description:
-        "Immersive gaming experiences that entertain, engage, and captivate players worldwide.",
-      tags: ["Game Dev", "Unity", "Interactive", "Mobile Games"],
-      visual: "games",
-      image: "/images/services/games.webp",
+        "From blogs to e-commerce, we build WordPress sites with custom themes, plugins, and performance optimisation.",
+      tags: ["Custom Themes", "WooCommerce", "Plugins", "Maintenance"],
+      visual: "web",
     },
     deliverables: [
       {
-        icon: "gamepad2",
-        title: "Game Development",
-        description: "Full-cycle development for mobile, web, and desktop — concept to launch.",
+        icon: "globe",
+        title: "Custom Themes",
+        description: "Bespoke WordPress themes tailored to your brand and conversion goals.",
       },
       {
-        icon: "smartphone",
-        title: "Mobile Games",
-        description: "Engaging iOS and Android games — casual, puzzle, action, and strategy.",
+        icon: "shoppingCart",
+        title: "WooCommerce Stores",
+        description: "Full e-commerce setup with payment gateways, inventory, and checkout optimisation.",
       },
       {
-        icon: "puzzle",
-        title: "Game Design",
-        description: "Creative mechanics, level design, and storytelling that keeps players hooked.",
+        icon: "code",
+        title: "Plugin Development",
+        description: "Custom plugins and integrations to extend WordPress functionality.",
       },
       {
-        icon: "zap",
-        title: "AR/VR Games",
-        description: "Immersive augmented and virtual reality experiences with cutting-edge tech.",
-      },
-      {
-        icon: "users",
-        title: "Multiplayer Games",
-        description: "Online multiplayer with real-time sync, matchmaking, and social features.",
-      },
-      {
-        icon: "trophy",
-        title: "Game Analytics",
-        description: "Player analytics, monetization strategies, and A/B testing for optimization.",
+        icon: "rocket",
+        title: "Performance & Security",
+        description: "Speed optimisation, security hardening, and ongoing maintenance.",
       },
     ],
-    tools: ["Unity", "Unreal Engine", "C#", "Blender", "Photon", "Firebase"],
+    tools: ["WordPress", "WooCommerce", "PHP", "ACF", "Elementor"],
     process: [
-      { step: "01", title: "Concept", description: "Define mechanics, art direction, and target audience." },
-      { step: "02", title: "Develop", description: "Prototype, iterate, and polish gameplay experiences." },
-      { step: "03", title: "Ship", description: "Launch, market, and optimize with live analytics." },
+      { step: "01", title: "Plan", description: "Define site structure, features, and content strategy." },
+      { step: "02", title: "Build", description: "Develop theme, configure plugins, and populate content." },
+      { step: "03", title: "Launch", description: "Deploy, train your team, and provide ongoing support." },
     ],
     cta: {
-      title: "Ready to Create Your Game?",
-      description: "Let's bring your game idea to life and build an experience players will love.",
-      buttonText: "Start Your Project",
+      title: "Ready for a Better WordPress Site?",
+      description: "Let's discuss your WordPress project and build something that performs.",
+      buttonText: "Let's Build Together",
+    },
+  },
+  shopify: {
+    slug: "shopify",
+    number: "02",
+    title: "Shopify Development",
+    metaDescription:
+      "Shopify store development — custom themes, apps, and conversion optimisation from Solivite Solutions.",
+    hero: {
+      theme: "light",
+      eyebrow: "Shopify Development",
+      headline: "Shopify Stores That",
+      headlineGradient: "Convert",
+      description:
+        "High-converting Shopify stores with custom themes, apps, and integrations built for growth.",
+      tags: ["Custom Themes", "Shopify Apps", "Conversion", "Integrations"],
+      visual: "development",
+    },
+    deliverables: [
+      {
+        icon: "shoppingCart",
+        title: "Custom Shopify Themes",
+        description: "On-brand storefronts optimised for speed, UX, and conversion.",
+      },
+      {
+        icon: "code",
+        title: "App Integrations",
+        description: "Connect your store with CRM, email, analytics, and fulfilment tools.",
+      },
+      {
+        icon: "layers",
+        title: "Store Migration",
+        description: "Seamless migration from other platforms with zero data loss.",
+      },
+      {
+        icon: "trendingUp",
+        title: "Conversion Optimisation",
+        description: "A/B testing, checkout flows, and UX improvements that lift sales.",
+      },
+    ],
+    tools: ["Shopify", "Liquid", "React", "Klaviyo", "Google Analytics"],
+    process: [
+      { step: "01", title: "Audit", description: "Review your catalog, brand, and conversion funnel." },
+      { step: "02", title: "Build", description: "Design and develop your custom Shopify experience." },
+      { step: "03", title: "Scale", description: "Launch, optimise, and grow your eCommerce revenue." },
+    ],
+    cta: {
+      title: "Ready to Scale Your Shopify Store?",
+      description: "Let's build a store that converts browsers into buyers.",
+      buttonText: "Let's Build Together",
+    },
+  },
+  custom: {
+    slug: "custom",
+    number: "02",
+    title: "Custom Development",
+    metaDescription:
+      "Custom MERN and MEAN web application development — scalable, secure, and built to your specs.",
+    hero: {
+      theme: "light",
+      eyebrow: "Custom Development",
+      headline: "MERN & MEAN Apps",
+      headlineGradient: "Built to Scale",
+      description:
+        "Complex custom web applications built on MERN or MEAN stack with precision, performance, and scalability in mind.",
+      tags: ["MERN", "MEAN", "React", "Node.js"],
+      visual: "development",
+    },
+    deliverables: [
+      {
+        icon: "code",
+        title: "Full-Stack Applications",
+        description: "End-to-end web apps with React, Next.js, Node.js, and modern databases.",
+      },
+      {
+        icon: "layers",
+        title: "API Development",
+        description: "RESTful and GraphQL APIs designed for performance and extensibility.",
+      },
+      {
+        icon: "cpu",
+        title: "AI Integration",
+        description: "Intelligent features, chatbots, and automation powered by modern AI APIs.",
+      },
+      {
+        icon: "database",
+        title: "Cloud & DevOps",
+        description: "AWS, Azure, or GCP deployment with CI/CD pipelines and monitoring.",
+      },
+    ],
+    tools: ["React", "Next.js", "Node.js", "MongoDB", "PostgreSQL", "AWS"],
+    process: [
+      { step: "01", title: "Architect", description: "Define system design, tech stack, and milestones." },
+      { step: "02", title: "Develop", description: "Agile sprints with demos, testing, and iteration." },
+      { step: "03", title: "Deploy", description: "Production launch with monitoring and handoff docs." },
+    ],
+    cta: {
+      title: "Need a Custom Web Application?",
+      description: "Let's architect and build a solution that scales with your business.",
+      buttonText: "Let's Build Together",
+    },
+  },
+  "mobile-apps": {
+    slug: "mobile-apps",
+    number: "02",
+    title: "Mobile App Development",
+    metaDescription:
+      "Native and cross-platform mobile app development for iOS and Android from Solivite Solutions.",
+    hero: {
+      theme: "light",
+      eyebrow: "Mobile Apps",
+      headline: "Mobile Apps Users",
+      headlineGradient: "Love",
+      description:
+        "Native iOS and Android apps plus cross-platform solutions — including interactive and game experiences.",
+      tags: ["iOS", "Android", "React Native", "Flutter"],
+      visual: "development",
+    },
+    deliverables: [
+      {
+        icon: "smartphone",
+        title: "Native Apps",
+        description: "High-performance iOS and Android apps with platform-native UX.",
+      },
+      {
+        icon: "globe",
+        title: "Cross-Platform",
+        description: "React Native and Flutter apps that ship to both stores from one codebase.",
+      },
+      {
+        icon: "gamepad2",
+        title: "Interactive Experiences",
+        description: "Engaging mobile games and interactive apps that captivate users.",
+      },
+      {
+        icon: "rocket",
+        title: "App Store Launch",
+        description: "Submission, ASO, analytics setup, and post-launch optimisation.",
+      },
+    ],
+    tools: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
+    process: [
+      { step: "01", title: "Design", description: "UX flows, wireframes, and interactive prototypes." },
+      { step: "02", title: "Build", description: "Develop, test, and refine across devices." },
+      { step: "03", title: "Ship", description: "App store submission, launch, and iteration." },
+    ],
+    cta: {
+      title: "Ready to Launch Your App?",
+      description: "Let's bring your mobile app idea to life.",
+      buttonText: "Let's Build Together",
     },
   },
 };
 
 export function getServicePageData(slug: string): ServicePageData | undefined {
   return SERVICE_PAGES[slug];
+}
+
+export function getDevelopmentSubPageData(slug: string): ServicePageData | undefined {
+  return DEVELOPMENT_SUB_PAGES[slug];
+}
+
+export function getDevelopmentSubSlugs(): string[] {
+  return Object.keys(DEVELOPMENT_SUB_PAGES);
 }
