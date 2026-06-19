@@ -8,7 +8,7 @@ export const HOME_HERO = {
 } as const;
 
 export const SERVICE_TEASERS = {
-  eyebrow: "What We Do Best",
+  eyebrow: "Service Teasers",
   title: "What We Do Best",
   items: [
     {
@@ -75,7 +75,8 @@ export const NEWSLETTER = {
   description:
     "Get the latest in AI, web development, design trends, and digital marketing — straight to your inbox. No spam, just value.",
   buttonLabel: "Subscribe Now",
-  footerDescription: "Subscribe for weekly digital insights and agency updates.",
+  footerDescription:
+    "Subscribe for weekly digital insights and agency updates.",
 } as const;
 
 export const VALUE_PROP = {
