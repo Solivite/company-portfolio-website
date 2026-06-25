@@ -7,6 +7,7 @@ import NewsletterStrip from "@/components/home/NewsletterStrip";
 import ValueProp from "@/components/home/ValueProp";
 import Testimonials from "@/components/Testimonials";
 import BlogPreview from "@/components/home/BlogPreview";
+import HomeAtmosphere from "@/components/effects/HomeAtmosphere";
 import { SITE } from "@/lib/constants";
 import { HOME_HERO } from "@/lib/home-content";
 
@@ -17,15 +18,19 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <ServiceTeasers />
-      <CorporateServices />
-      <FlexiblePlans />
-      <NewsletterStrip />
-      <ValueProp />
-      <Testimonials />
-      <BlogPreview />
-    </>
+    <div className="relative bg-surface-dark">
+      <HomeAtmosphere />
+
+      <div className="relative z-10">
+        <Hero />
+        <ServiceTeasers />
+        <CorporateServices />
+        <FlexiblePlans />
+        <NewsletterStrip />
+        <ValueProp />
+        <Testimonials />
+        <BlogPreview />
+      </div>
+    </div>
   );
 }

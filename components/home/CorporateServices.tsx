@@ -3,15 +3,12 @@
 import { CORPORATE_SERVICES } from "@/lib/home-content";
 import SectionHeader from "@/components/ui/SectionHeader";
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import SectionGlow from "@/components/ui/SectionGlow";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function CorporateServices() {
   return (
-    <section className="relative overflow-hidden bg-surface-dark py-24 md:py-32">
-      <SectionGlow position="center" />
-
-      <div className="relative z-10 container mx-auto px-4">
+    <section className="relative py-24 md:py-32">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
           <ScrollReveal>
             <SectionHeader
@@ -31,7 +28,7 @@ export default function CorporateServices() {
           <div className="space-y-6">
             {CORPORATE_SERVICES.points.map((point, index) => (
               <ScrollReveal key={point.number} delay={index * 0.12}>
-                <article className="rounded-2xl border border-white/5 bg-surface-dark-elevated p-8">
+                <article className="dark-card p-8">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="font-display text-sm font-bold text-purple-400">
                       {point.number}

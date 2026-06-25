@@ -152,7 +152,35 @@
   );
 }
 
-/* Soft lavender light sections — replaces flat white */
+/* Continuous dark sections — atmospheric purple glow bands */
+.section-surface-dark {
+  position: relative;
+  background-color: hsl(var(--surface-dark));
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -5%, hsl(271 70% 28% / 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 65% 45% at 95% 50%, hsl(283 60% 22% / 0.1) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 40% at 5% 70%, hsl(265 55% 20% / 0.08) 0%, transparent 48%);
+}
+
+.section-surface-dark-alt {
+  position: relative;
+  background-color: hsl(var(--surface-dark));
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 105%, hsl(271 75% 32% / 0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 15% 30%, hsl(280 65% 25% / 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 35% at 85% 60%, hsl(260 50% 18% / 0.08) 0%, transparent 45%);
+}
+
+.section-surface-dark-accent {
+  position: relative;
+  background-color: hsl(var(--surface-dark));
+  background-image:
+    radial-gradient(ellipse 100% 60% at 50% 50%, hsl(271 80% 35% / 0.2) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 45% at 20% 80%, hsl(280 70% 28% / 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, hsl(265 60% 22% / 0.1) 0%, transparent 48%);
+}
+
+/* Soft lavender light sections — used on non-home pages */
 .section-surface-light {
   position: relative;
   background-color: hsl(var(--surface-light));
@@ -171,7 +199,155 @@
     radial-gradient(ellipse 80% 50% at 50% 0%, hsl(271 40% 88% / 0.35) 0%, transparent 55%);
 }
 
+/* Home page atmospheric gradient shapes */
+.atmo-shape {
+  pointer-events: none;
+  position: absolute;
+}
+
+.atmo-ellipse-h {
+  border-radius: 100%;
+  filter: blur(120px);
+}
+
+.atmo-ellipse-v {
+  border-radius: 100%;
+  filter: blur(110px);
+}
+
+.atmo-blob {
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+  filter: blur(100px);
+}
+
+.atmo-blob-alt {
+  border-radius: 40% 60% 45% 55% / 55% 45% 60% 40%;
+  filter: blur(90px);
+}
+
+.atmo-diamond {
+  transform: rotate(45deg);
+  filter: blur(80px);
+}
+
+.atmo-ring {
+  border-radius: 50%;
+  filter: blur(60px);
+  background: radial-gradient(
+    circle,
+    transparent 35%,
+    hsl(271 75% 45% / 0.18) 50%,
+    transparent 70%
+  );
+}
+
+.atmo-conic {
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+.atmo-slash {
+  filter: blur(90px);
+  transform-origin: center;
+}
+
+.atmo-corner {
+  filter: blur(80px);
+}
+
+.atmo-spot {
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+.atmo-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 0%, hsl(271 70% 22% / 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 60% at 100% 45%, hsl(283 55% 18% / 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 50% at 0% 65%, hsl(265 50% 16% / 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse 70% 40% at 80% 90%, hsl(271 60% 20% / 0.05) 0%, transparent 50%);
+}
+
+.atmo-mesh-lower {
+  position: absolute;
+  inset: 0;
+  top: 55%;
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 30%, hsl(271 75% 38% / 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 55% at 15% 60%, hsl(283 65% 35% / 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 75% 50% at 85% 70%, hsl(265 60% 32% / 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 90% 60% at 50% 100%, hsl(271 70% 30% / 0.16) 0%, transparent 65%);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 60px hsl(271 90% 60% / 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
 @layer components {
+  .dark-card {
+    @apply rounded-2xl border border-white/[0.06] shadow-sm shadow-purple-900/20 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/30 hover:shadow-lg hover:shadow-purple-500/15;
+    background-color: hsl(var(--surface-dark-elevated) / 0.7);
+  }
+
+  .dark-card-glow {
+    @apply dark-card;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dark-card-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      hsl(271 80% 55% / 0.08) 0%,
+      transparent 45%,
+      hsl(283 70% 50% / 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .dark-card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .card-accent-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(271 80% 60% / 0.7) 30%,
+      hsl(283 75% 55% / 0.7) 70%,
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .dark-card-glow:hover .card-accent-top {
+    opacity: 1;
+  }
+
+  .dark-chip {
+    @apply rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-purple-300;
+  }
+
   .light-card {
     @apply rounded-2xl border border-purple-200/70 bg-white/90 shadow-sm shadow-purple-900/[0.04] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-purple-400/50 hover:shadow-lg hover:shadow-purple-500/10;
   }

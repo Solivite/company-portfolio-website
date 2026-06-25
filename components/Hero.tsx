@@ -10,8 +10,14 @@ import { HOME_HERO } from "@/lib/home-content";
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
-      <HeroBackground rayIntensity={1.1} />
+      <HeroBackground rayIntensity={1.1} showGlow={false} />
       <HeroParticleSphere />
+
+      {/* Blend hero into the unified page background */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-40 bg-gradient-to-b from-transparent to-[hsl(260_20%_4%)] md:h-56"
+        aria-hidden
+      />
 
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="mx-auto max-w-5xl text-center">

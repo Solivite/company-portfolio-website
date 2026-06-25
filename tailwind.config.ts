@@ -65,6 +65,10 @@ const config: Config = {
         "fade-up": "fadeUp 0.8s ease-out forwards",
         marquee: "marquee 30s linear infinite",
         "glow-pulse": "glowPulse 4s ease-in-out infinite",
+        "atmo-drift": "atmoDrift 20s ease-in-out infinite",
+        "atmo-float": "atmoFloat 14s ease-in-out infinite",
+        "atmo-sway": "atmoSway 10s ease-in-out infinite",
+        shimmer: "shimmer 6s ease-in-out infinite",
       },
       keyframes: {
         fadeUp: {
@@ -77,7 +81,24 @@ const config: Config = {
         },
         glowPulse: {
           "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
+          "50%": { opacity: "0.85" },
+        },
+        atmoDrift: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "33%": { transform: "translate(24px, -18px) scale(1.04)" },
+          "66%": { transform: "translate(-18px, 12px) scale(0.97)" },
+        },
+        atmoFloat: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        atmoSway: {
+          "0%, 100%": { transform: "rotate(0deg) scale(1)" },
+          "50%": { transform: "rotate(6deg) scale(1.03)" },
+        },
+        shimmer: {
+          "0%, 100%": { opacity: "0.5" },
+          "50%": { opacity: "1" },
         },
       },
     },

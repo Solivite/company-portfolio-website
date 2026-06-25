@@ -9,8 +9,8 @@ export default function FlexiblePlans() {
   const previewStudies = CASE_STUDIES.slice(0, 4);
 
   return (
-    <section className="relative overflow-hidden section-surface-light py-24 md:py-32">
-      <div className="relative z-10 container mx-auto px-4">
+    <section className="relative py-24 md:py-32">
+      <div className="container mx-auto px-4">
         <ScrollReveal>
           <SectionHeader
             eyebrow={FLEXIBLE_PLANS.eyebrow}
@@ -18,16 +18,15 @@ export default function FlexiblePlans() {
               <>
                 Flexible Plans Built
                 <br />
-                <span className="text-gradient-light">Around Your Goals</span>
+                <span className="text-gradient">Around Your Goals</span>
               </>
             }
             description={FLEXIBLE_PLANS.description}
-            dark={false}
           />
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <p className="mx-auto -mt-8 mb-12 max-w-3xl text-center text-base text-slate-600 md:text-lg">
+          <p className="mx-auto -mt-8 mb-12 max-w-3xl text-center text-base text-gray-400 md:text-lg">
             {FLEXIBLE_PLANS.subDescription}
           </p>
         </ScrollReveal>
@@ -40,7 +39,7 @@ export default function FlexiblePlans() {
 
         <ScrollReveal delay={0.3}>
           <div className="mt-12 text-center">
-            <PrimaryButton href={FLEXIBLE_PLANS.cta.href} variant="dark">
+            <PrimaryButton href={FLEXIBLE_PLANS.cta.href}>
               {FLEXIBLE_PLANS.cta.label}
             </PrimaryButton>
           </div>

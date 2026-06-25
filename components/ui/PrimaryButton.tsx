@@ -25,7 +25,8 @@ export default function PrimaryButton({
       "bg-gradient-to-r from-purple-600 to-violet-600 text-white hover:from-purple-500 hover:to-violet-500 glow-purple",
     outline:
       "border border-white/20 text-white hover:border-purple-400/50 hover:bg-white/5",
-    dark: "bg-foreground text-background hover:bg-foreground/90",
+    dark:
+      "border border-white/15 bg-white/[0.06] text-white backdrop-blur-sm hover:border-purple-400/40 hover:bg-white/10",
   };
 
   return (
