@@ -6,6 +6,8 @@ import type { ServiceVisualType } from "@/lib/services-data";
 import TorusScene from "./scenes/TorusScene";
 import FunnelScene from "./scenes/FunnelScene";
 import PedestalScene from "./scenes/PedestalScene";
+import ParticleCubeScene from "./scenes/ParticleCubeScene";
+import ParticleBracketsScene from "./scenes/ParticleBracketsScene";
 
 interface WebGLCanvasProps {
   type: ServiceVisualType;
@@ -14,8 +16,11 @@ interface WebGLCanvasProps {
 
 function Scene({ type }: { type: ServiceVisualType }) {
   switch (type) {
-    case "development":
+    case "design":
+      return <ParticleCubeScene />;
     case "web":
+      return <ParticleBracketsScene />;
+    case "development":
       return <TorusScene />;
     case "marketing":
       return <FunnelScene />;

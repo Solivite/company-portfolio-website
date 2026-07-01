@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const WebGLCanvas = dynamic(() => import("./WebGLCanvas"), { ssr: false });
 
 const WEBGL_TYPES: ServiceVisualType[] = [
+  "design",
   "development",
   "web",
   "marketing",

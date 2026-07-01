@@ -25,7 +25,7 @@ export default function Home() {
         <Hero />
         <ServiceTeasers />
         <CorporateServices />
-        <FlexiblePlans />
+        {/* <FlexiblePlans /> */}
         <NewsletterStrip />
         <ValueProp />
         <Testimonials />

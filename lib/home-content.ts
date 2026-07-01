@@ -70,6 +70,81 @@ export const FLEXIBLE_PLANS = {
   cta: { label: "View Our Work", href: "/work" },
 } as const;
 
+export type FlexiblePlanVisual = "design" | "web" | "development" | "marketing";
+
+export interface FlexiblePlanCard {
+  number: string;
+  title: string;
+  description: string;
+  href: string;
+  services: readonly string[];
+  tools: readonly string[];
+  visual: FlexiblePlanVisual;
+}
+
+export const FLEXIBLE_PLANS_CARDS: readonly FlexiblePlanCard[] = [
+  {
+    number: "01",
+    title: "UI/UX Design",
+    description:
+      "End-to-end product design — research, UX flows, polished UI systems, and developer-ready handoff.",
+    href: "/services/design",
+    services: [
+      "User Research & Strategy",
+      "UX Flows & Wireframes",
+      "UI Systems & Prototypes",
+      "Design Ops & Dev Handoff",
+    ],
+    tools: ["Figma", "Sketch", "Adobe XD", "Blender", "Framer", "After Effects"],
+    visual: "design",
+  },
+  {
+    number: "02",
+    title: "Website Design",
+    description:
+      "Brand-led, conversion-tuned websites — identity, art direction, motion, and storytelling that match the brand.",
+    href: "/services/design",
+    services: [
+      "Brand & Visual Identity",
+      "Art Direction & Storytelling",
+      "Responsive Web Design",
+      "Motion & Micro-interactions",
+    ],
+    tools: ["Figma", "Framer", "Webflow", "After Effects", "Principle"],
+    visual: "web",
+  },
+  {
+    number: "03",
+    title: "Web Development",
+    description:
+      "Fast, scalable builds — WordPress, Shopify, MERN/MEAN, and custom stacks engineered for performance.",
+    href: "/services/development",
+    services: [
+      "WordPress & WooCommerce",
+      "Shopify & Headless Commerce",
+      "MERN / MEAN Applications",
+      "APIs, Integrations & DevOps",
+    ],
+    tools: ["React", "Next.js", "Node.js", "WordPress", "Shopify", "AWS"],
+    visual: "development",
+  },
+  {
+    number: "04",
+    title: "Digital Marketing",
+    description:
+      "SEO, paid media, and content — AI-informed strategy that puts your brand in front of the right audience.",
+    href: "/services/marketing",
+    services: [
+      "SEO & Content Strategy",
+      "Google Ads & PPC",
+      "Social Media Marketing",
+      "Analytics & Conversion Optimization",
+    ],
+    tools: ["Google Ads", "Meta Suite", "Google Analytics", "SEMrush", "HubSpot"],
+    visual: "marketing",
+  },
+] as const;
+
 export const NEWSLETTER = {
   title: "Stay Ahead of the Digital Curve",
   description:
