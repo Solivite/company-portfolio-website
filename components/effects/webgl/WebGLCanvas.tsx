@@ -3,11 +3,11 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import type { ServiceVisualType } from "@/lib/services-data";
-import TorusScene from "./scenes/TorusScene";
-import FunnelScene from "./scenes/FunnelScene";
 import PedestalScene from "./scenes/PedestalScene";
 import ParticleCubeScene from "./scenes/ParticleCubeScene";
 import ParticleBracketsScene from "./scenes/ParticleBracketsScene";
+import ParticlePhoneScene from "./scenes/ParticlePhoneScene";
+import ParticleFunnelScene from "./scenes/ParticleFunnelScene";
 
 interface WebGLCanvasProps {
   type: ServiceVisualType;
@@ -21,9 +21,9 @@ function Scene({ type }: { type: ServiceVisualType }) {
     case "web":
       return <ParticleBracketsScene />;
     case "development":
-      return <TorusScene />;
+      return <ParticlePhoneScene />;
     case "marketing":
-      return <FunnelScene />;
+      return <ParticleFunnelScene />;
     case "ai":
       return <PedestalScene variant="ai" />;
     case "meta":

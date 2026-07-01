@@ -5,8 +5,8 @@ import { Suspense } from "react";
 import type { FlexiblePlanVisual } from "@/lib/home-content";
 import ParticleCubeScene from "@/components/effects/webgl/scenes/ParticleCubeScene";
 import ParticleBracketsScene from "@/components/effects/webgl/scenes/ParticleBracketsScene";
-import TorusScene from "@/components/effects/webgl/scenes/TorusScene";
-import FunnelScene from "@/components/effects/webgl/scenes/FunnelScene";
+import ParticlePhoneScene from "@/components/effects/webgl/scenes/ParticlePhoneScene";
+import ParticleFunnelScene from "@/components/effects/webgl/scenes/ParticleFunnelScene";
 
 interface PlansWebGLCanvasProps {
   activeVisual: FlexiblePlanVisual;
@@ -20,9 +20,9 @@ function Scene({ type }: { type: FlexiblePlanVisual }) {
     case "web":
       return <ParticleBracketsScene />;
     case "development":
-      return <TorusScene />;
+      return <ParticlePhoneScene />;
     case "marketing":
-      return <FunnelScene />;
+      return <ParticleFunnelScene />;
     default:
       return null;
   }
