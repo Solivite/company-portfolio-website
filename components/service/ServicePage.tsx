@@ -13,21 +13,19 @@ interface ServicePageProps {
 }
 
 export default function ServicePage({ data }: ServicePageProps) {
-  const isDark = data.hero.theme === "dark";
-
   return (
     <>
       <ServiceHero data={data} />
       {data.subOfferings && (
-        <ServiceSubOfferings offerings={data.subOfferings} dark={isDark} />
+        <ServiceSubOfferings offerings={data.subOfferings} dark />
       )}
       <ServiceDeliverables
         deliverables={data.deliverables}
         title={data.title}
-        dark={!isDark}
+        dark
       />
-      <ServiceProcess process={data.process} dark={isDark} />
-      <ServiceTools tools={data.tools} dark={!isDark} />
+      <ServiceProcess process={data.process} dark />
+      <ServiceTools tools={data.tools} dark />
       <ServiceCTA cta={data.cta} />
     </>
   );

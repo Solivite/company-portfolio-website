@@ -36,7 +36,7 @@ export const MAIN_SERVICES: readonly MainService[] = [
       "WordPress, Shopify, MERN, MEAN, or mobile — we build fast, scalable, and future-proof digital products tailored to your business.",
     href: "/services/development",
     tags: ["WordPress", "Shopify", "MERN", "Mobile"],
-    theme: "light",
+    theme: "dark",
   },
   {
     number: "03",

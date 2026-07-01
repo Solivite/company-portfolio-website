@@ -27,12 +27,12 @@ export default function ServiceVisual({ type, theme, image, className }: Service
       aria-hidden
     >
       {type === "design" && <DesignVisual />}
-      {type === "development" && <DevelopmentVisual />}
-      {type === "web" && <WebVisual />}
+      {type === "development" && <DevelopmentVisual dark={isDark} />}
+      {type === "web" && <WebVisual dark={isDark} />}
       {type === "marketing" && <MarketingVisual />}
       {type === "meta" && <PedestalVisual />}
       {type === "ai" && <PedestalVisual variant="ai" />}
-      {type === "content" && <ContentVisual />}
+      {type === "content" && <ContentVisual dark={isDark} />}
       {type === "games" && <GamesVisual />}
 
       <WebGLServiceVisual type={type} />
@@ -59,7 +59,30 @@ function DesignVisual() {
   );
 }
 
-function DevelopmentVisual() {
+function DevelopmentVisual({ dark = false }: { dark?: boolean }) {
+  if (dark) {
+    return (
+      <>
+        <div className="absolute inset-0 hero-atmosphere opacity-60" />
+        <div className="absolute inset-4 rounded-xl border-2 border-purple-500/20" />
+        <div className="absolute -right-4 top-8 h-16 w-16 rounded-full bg-purple-600/20 blur-sm" />
+        <div className="absolute -left-2 bottom-12 h-10 w-10 rotate-12 rounded-lg bg-violet-600/30" />
+        <div className="relative z-10 mx-auto w-32 rounded-[2rem] border-4 border-purple-500/30 bg-surface-dark p-1 shadow-xl shadow-purple-900/50">
+          <div className="aspect-[9/19] rounded-[1.5rem] bg-gradient-to-b from-purple-950 to-violet-950">
+            <div className="space-y-2 p-3">
+              <div className="h-2 w-12 rounded bg-purple-500/40" />
+              <div className="h-8 rounded-lg bg-purple-800/40" />
+              <div className="h-8 rounded-lg bg-violet-800/40" />
+            </div>
+          </div>
+        </div>
+        <div className="absolute right-8 top-1/4 font-mono text-2xl font-bold text-purple-400/50">
+          {"</>"}
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="absolute inset-4 rounded-xl border-2 border-purple-200/60" />
@@ -81,7 +104,16 @@ function DevelopmentVisual() {
   );
 }
 
-function WebVisual() {
+function WebVisual({ dark = false }: { dark?: boolean }) {
+  if (dark) {
+    return (
+      <>
+        <div className="absolute inset-0 hero-atmosphere opacity-50" />
+        <div className="relative h-32 w-32 rounded-full border-[6px] border-purple-500/25 bg-gradient-to-br from-gray-900 via-purple-950 to-violet-950 shadow-2xl shadow-purple-900/40" />
+      </>
+    );
+  }
+
   return (
     <>
       <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-violet-50" />
@@ -134,7 +166,22 @@ function PedestalVisual({ variant = "meta" }: { variant?: "meta" | "ai" }) {
   );
 }
 
-function ContentVisual() {
+function ContentVisual({ dark = false }: { dark?: boolean }) {
+  if (dark) {
+    return (
+      <>
+        <div className="absolute inset-0 hero-atmosphere opacity-40" />
+        <div className="relative z-10 w-full space-y-3 p-8">
+          <div className="h-3 w-3/4 rounded bg-purple-500/30" />
+          <div className="h-3 w-full rounded bg-purple-600/20" />
+          <div className="h-3 w-5/6 rounded bg-purple-600/20" />
+          <div className="h-3 w-2/3 rounded bg-purple-500/30" />
+          <div className="mt-6 font-display text-4xl font-bold text-purple-400/40">&ldquo;</div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-white" />

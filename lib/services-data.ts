@@ -157,7 +157,7 @@ export const SERVICE_PAGES: Record<string, ServicePageData> = {
     metaDescription:
       "WordPress, Shopify, MERN, MEAN, and mobile app development — fast, scalable, future-proof digital products.",
     hero: {
-      theme: "light",
+      theme: "dark",
       eyebrow: "Web & App Development",
       headline: "Build Fast, Scalable",
       headlineGradient: "Digital Products",
@@ -310,7 +310,7 @@ export const DEVELOPMENT_SUB_PAGES: Record<string, ServicePageData> = {
     metaDescription:
       "Custom WordPress development — themes, plugins, e-commerce, and maintenance from Solivite Solutions.",
     hero: {
-      theme: "light",
+      theme: "dark",
       eyebrow: "WordPress Development",
       headline: "WordPress Sites That",
       headlineGradient: "Perform",
@@ -360,7 +360,7 @@ export const DEVELOPMENT_SUB_PAGES: Record<string, ServicePageData> = {
     metaDescription:
       "Shopify store development — custom themes, apps, and conversion optimisation from Solivite Solutions.",
     hero: {
-      theme: "light",
+      theme: "dark",
       eyebrow: "Shopify Development",
       headline: "Shopify Stores That",
       headlineGradient: "Convert",
@@ -410,7 +410,7 @@ export const DEVELOPMENT_SUB_PAGES: Record<string, ServicePageData> = {
     metaDescription:
       "Custom MERN and MEAN web application development — scalable, secure, and built to your specs.",
     hero: {
-      theme: "light",
+      theme: "dark",
       eyebrow: "Custom Development",
       headline: "MERN & MEAN Apps",
       headlineGradient: "Built to Scale",
@@ -460,7 +460,7 @@ export const DEVELOPMENT_SUB_PAGES: Record<string, ServicePageData> = {
     metaDescription:
       "Native and cross-platform mobile app development for iOS and Android from Solivite Solutions.",
     hero: {
-      theme: "light",
+      theme: "dark",
       eyebrow: "Mobile Apps",
       headline: "Mobile Apps Users",
       headlineGradient: "Love",
