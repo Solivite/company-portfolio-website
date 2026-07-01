@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { SITE } from "@/lib/constants";
-import GradientHeadline, { GradientText } from "@/components/ui/GradientHeadline";
+import GradientHeadline, {
+  GradientText,
+} from "@/components/ui/GradientHeadline";
 import HeroBackground from "@/components/effects/HeroBackground";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -14,7 +16,9 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [feedback, setFeedback] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -60,19 +64,23 @@ export default function ContactPage() {
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-purple-400">
               Contact
             </p>
-            <GradientHeadline as="h1" className="text-4xl md:text-6xl lg:text-7xl">
+            <GradientHeadline
+              as="h1"
+              className="text-4xl md:text-6xl lg:text-7xl"
+            >
               Let&apos;s Build <GradientText>Together</GradientText>
             </GradientHeadline>
             <p className="mx-auto mt-6 max-w-xl text-lg text-gray-400">
-              Ready to build, design, and grow your brand online? Tell us about your
-              project and we&apos;ll get back to you within one business day.
+              Ready to build, design, and grow your brand online? Tell us about
+              your project and we&apos;ll get back to you within one business
+              day.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Form + Info */}
-      <section className="bg-surface-dark pb-20 md:pb-28">
+      <section className="bg-surface-dark mt-12 pb-20 md:pb-28">
         <div className="container mx-auto px-4">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-3">
             {/* Contact cards */}
@@ -118,7 +126,7 @@ export default function ContactPage() {
                       <p key={line} className="mt-1 text-sm text-gray-400">
                         {line}
                       </p>
-                    )
+                    ),
                   )}
                 </div>
               ))}
@@ -137,7 +145,10 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                   <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-300">
+                      <label
+                        htmlFor="name"
+                        className="mb-2 block text-sm font-medium text-gray-300"
+                      >
                         Name
                       </label>
                       <input
@@ -153,7 +164,10 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-300">
+                      <label
+                        htmlFor="email"
+                        className="mb-2 block text-sm font-medium text-gray-300"
+                      >
                         Email
                       </label>
                       <input
@@ -171,7 +185,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="mb-2 block text-sm font-medium text-gray-300">
+                    <label
+                      htmlFor="subject"
+                      className="mb-2 block text-sm font-medium text-gray-300"
+                    >
                       Subject
                     </label>
                     <input
@@ -188,7 +205,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-300">
+                    <label
+                      htmlFor="message"
+                      className="mb-2 block text-sm font-medium text-gray-300"
+                    >
                       Message
                     </label>
                     <textarea
