@@ -13,6 +13,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     subject: "",
     message: "",
   });
@@ -43,7 +44,7 @@ export default function ContactPage() {
 
       setStatus("success");
       setFeedback(data.message ?? "Thank you for your message!");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     } catch {
       setStatus("error");
       setFeedback("Network error. Please check your connection and try again.");
@@ -184,24 +185,45 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div>
-                    <label
-                      htmlFor="subject"
-                      className="mb-2 block text-sm font-medium text-gray-300"
-                    >
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      required
-                      value={formData.subject}
-                      onChange={(e) =>
-                        setFormData({ ...formData, subject: e.target.value })
-                      }
-                      className={inputClass}
-                      placeholder="What's this about?"
-                    />
+                  <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="mb-2 block text-sm font-medium text-gray-300"
+                      >
+                        Phone
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        required
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
+                        className={inputClass}
+                        placeholder="+1 (555) 000-0000"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="subject"
+                        className="mb-2 block text-sm font-medium text-gray-300"
+                      >
+                        Subject
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        required
+                        value={formData.subject}
+                        onChange={(e) =>
+                          setFormData({ ...formData, subject: e.target.value })
+                        }
+                        className={inputClass}
+                        placeholder="What's this about?"
+                      />
+                    </div>
                   </div>
 
                   <div>

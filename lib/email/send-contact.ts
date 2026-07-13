@@ -3,6 +3,7 @@ import { SITE } from "@/lib/constants";
 interface ContactEmailPayload {
   name: string;
   email: string;
+  phone: string;
   subject: string;
   message: string;
 }
@@ -30,6 +31,7 @@ export async function sendContactEmail(payload: ContactEmailPayload): Promise<vo
     text: [
       `Name: ${payload.name}`,
       `Email: ${payload.email}`,
+      `Phone: ${payload.phone}`,
       `Subject: ${payload.subject}`,
       "",
       payload.message,
@@ -38,6 +40,7 @@ export async function sendContactEmail(payload: ContactEmailPayload): Promise<vo
       <h2>New contact form submission</h2>
       <p><strong>Name:</strong> ${escapeHtml(payload.name)}</p>
       <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(payload.phone)}</p>
       <p><strong>Subject:</strong> ${escapeHtml(payload.subject)}</p>
       <hr />
       <p>${escapeHtml(payload.message).replace(/\n/g, "<br />")}</p>
