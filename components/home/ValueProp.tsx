@@ -25,7 +25,7 @@ export default function ValueProp() {
           />
         </ScrollReveal>
 
-        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
           {VALUE_PROP.features.map((feature, index) => {
             const Icon = featureIcons[index] ?? Brain;
             return (

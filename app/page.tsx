@@ -26,10 +26,10 @@ export default function Home() {
         <ServiceTeasers />
         <CorporateServices />
         {/* <FlexiblePlans /> */}
-        <NewsletterStrip />
         <ValueProp />
         <Testimonials />
         <BlogPreview />
+        <NewsletterStrip />
       </div>
     </div>
   );
