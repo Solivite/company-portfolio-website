@@ -24,7 +24,7 @@ export default function Footer() {
               Office
             </h3>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li>{SITE.location}</li>
+              <li>{SITE.slogan}</li>
               <li>
                 <a
                   href={`mailto:${SITE.email}`}
@@ -51,13 +51,19 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-gray-400">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="transition-colors hover:text-white">
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-white"
+                  >
                     {link.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/blog" className="transition-colors hover:text-white">
+                <Link
+                  href="/blog"
+                  className="transition-colors hover:text-white"
+                >
                   Blog
                 </Link>
               </li>
@@ -71,7 +77,10 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-gray-400">
               {FOOTER_SERVICES.map((service) => (
                 <li key={service.href}>
-                  <Link href={service.href} className="transition-colors hover:text-white">
+                  <Link
+                    href={service.href}
+                    className="transition-colors hover:text-white"
+                  >
                     {service.title}
                   </Link>
                 </li>

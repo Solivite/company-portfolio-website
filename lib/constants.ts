@@ -4,6 +4,7 @@ export const SITE = {
   name: "Solivite Solutions",
   shortName: "Solivite",
   tagline: "The smartest way to build, design, and grow your brand online.",
+  slogan: "Ai-First Digital Agency",
   email: "hello@solivite.com",
   phone: "+1 (805) 295-0538",
   website: "www.solivite.com",
