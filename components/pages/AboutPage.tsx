@@ -155,7 +155,7 @@ export default function AboutPage() {
 
           <ScrollReveal delay={0.3}>
             <div className="mt-12 text-center">
-              <PrimaryButton href="/contact">Let&apos;s Build Together</PrimaryButton>
+              <PrimaryButton href="/start-project">Let&apos;s Build Together</PrimaryButton>
             </div>
           </ScrollReveal>
         </div>

@@ -28,7 +28,7 @@ export default function CTA() {
             />
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <PrimaryButton href="/contact">Start Your Project</PrimaryButton>
+              <PrimaryButton href="/start-project">Start Your Project</PrimaryButton>
               <PrimaryButton href="/about" variant="outline" showArrow={false}>
                 Learn About Us
               </PrimaryButton>

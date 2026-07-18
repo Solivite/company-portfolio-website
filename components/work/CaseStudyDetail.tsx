@@ -122,7 +122,7 @@ export default function CaseStudyDetail({ study }: CaseStudyDetailProps) {
               project.
             </p>
             <div className="mt-8">
-              <PrimaryButton href="/contact">Start Your Project</PrimaryButton>
+              <PrimaryButton href="/start-project">Start Your Project</PrimaryButton>
             </div>
           </ScrollReveal>
         </div>
